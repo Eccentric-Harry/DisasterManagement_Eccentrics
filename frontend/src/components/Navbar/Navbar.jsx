@@ -34,8 +34,9 @@ const Navbar = () => {
             </button>
 
             <button
-              onClick={() => navigate('/active-incidents')}
-              className='inline-block px-6 py-2 duration-200 hover:bg-white hover:text-black hover:font-bold rounded-full'
+
+              onClick={() => navigate('/activeIncidents')}
+              className="text-white hover:text-gray-300 transition"
             >
               Active Incidents
             </button>
@@ -51,10 +52,6 @@ const Navbar = () => {
       </div>
     </header>
   );
-  
-  
-  
-  
 };
 
 export default Navbar;

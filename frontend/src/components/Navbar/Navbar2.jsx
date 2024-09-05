@@ -13,7 +13,7 @@ const Navbar2 = () => {
 
   return (
     <div className='navbar'>
-      <Link to = '/'><img src={logo} alt="" className='logo'/> </Link>
+      {/* <Link to = '/'><img src={logo} alt="" className='logo'/> </Link> */}
       <div className='logo-text'>SRT <span>Emergency Response</span></div> 
       <ul>
         {/* <li><Link to = '/' className='link' >Home</Link></li> */}

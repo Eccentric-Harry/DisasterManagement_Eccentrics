@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const fs = require('fs');
+const csv = require('csv-parser'); // Import csv-parser to parse CSV files
+const axios = require('axios'); // Import axios to make HTTP requests
 
 // Import custom modules using CommonJS
 const { logger, logEvents } = require('./middleware/logger');
@@ -42,6 +45,57 @@ app.use(disasterRoutes);
 app.use('/disasters', resourceRoutes);
 app.use('/disasters', reportRoutes);
 app.use('/disasters', downloadReportRoutes);
+
+// Endpoint to serve active incidents CSV data
+app.get('/api/activeIncidents', (req, res) => {
+  const results = [];
+  const csvFilePath = path.join(__dirname, 'data', 'tweets.csv');
+
+  fs.createReadStream(csvFilePath)
+    .pipe(csv())
+    .on('data', (data) => results.push(data))
+    .on('end', () => {
+      res.json(results);
+    })
+    .on('error', (err) => {
+      console.error(err);
+      res.status(500).json({ error: 'Failed to read CSV file' });
+    });
+});
+
+// Endpoint to fetch tweet details by URL
+// app.get('/api/tweetDetails', async (req, res) => {
+//   try {
+//     const { url } = req.query;
+//     if (!url) return res.status(400).json({ error: 'No URL provided' });
+
+//     const tweetId = url.split('/').pop(); // Extract tweet ID from URL
+
+//     // Fetch tweet details from Twitter API
+//     const response = await axios.get(`https://api.twitter.com/2/tweets/${tweetId}?expansions=author_id&tweet.fields=created_at&user.fields=username`, {
+//       headers: { Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN.trim()}` } // Use trimmed token
+//     });
+
+//     const tweetData = response.data;
+//     const userData = tweetData.includes.users[0]; // Fetch user information
+
+//     res.json({
+//       username: userData.username, // Ensure correct field is accessed
+//       text: tweetData.data.text,
+//       postedDate: tweetData.data.created_at,
+//       image: tweetData.data.attachments ? tweetData.data.attachments.media_keys[0] : null // Adjust based on Twitter API response
+//     });
+//   } catch (err) {
+//     console.error('Error fetching tweet details:', err.response ? err.response.data : err.message);
+    
+//     // Handling different error scenarios
+//     if (err.response && err.response.status === 401) {
+//       res.status(401).json({ error: 'Unauthorized access - check your Bearer Token' });
+//     } else {
+//       res.status(500).json({ error: 'Failed to fetch tweet details' });
+//     }
+//   }
+// });
 
 // Fallback for non-existing routes
 app.all('*', (req, res) => {

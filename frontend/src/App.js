@@ -13,6 +13,7 @@ import UserDisasters from './features/users/UserDisasters';
 import UserDisasterDetail from './features/disasters/userDisasterDetail';
 import ResourceForm from './features/disasters/disasterResource';
 import ReportForm from './features/disasters/disasterReportForm';
+import ActiveIncidents from './features/disasters/activeIncidents'; // Import the new component
 
 function App() {
   return (
@@ -21,27 +22,27 @@ function App() {
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        
+
         <Route path="dash" element={<DashLayout />}>
           <Route path="admin" element={<AdminDashboard />}>
             <Route index element={<DisasterList />} />
-           
           </Route>
 
           <Route path="disasters">
             <Route path=":id" element={<DisasterDetail />} />
             <Route path=":id/resources" element={<ResourceForm />} />
             <Route path=":id/report" element={<ReportForm />} />
-          </Route> 
-
-          
+          </Route>
 
           <Route path="user" element={<UserDashboard />}>
             <Route index element={<DisasterReporting />} />
-            <Route path='disasters' element={<UserDisasters />} />
+            <Route path="disasters" element={<UserDisasters />} />
             <Route path="disasters/:id" element={<UserDisasterDetail />} />
           </Route>
         </Route>
+
+        {/* New Route for Active Incidents */}
+        <Route path="/activeIncidents" element={<ActiveIncidents />} />
       </Route>
     </Routes>
   );
