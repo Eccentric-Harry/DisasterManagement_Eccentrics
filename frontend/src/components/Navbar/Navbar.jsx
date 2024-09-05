@@ -13,7 +13,7 @@ const Navbar = () => {
           {/* Logo Section */}
           <div className="flex-shrink-0">
             <Link to="/">
-              <img src={logo} alt="Logo" className="h-20 w-20 ml-16" /> {/* Adjust logo size as needed */}
+              <img src={logo} alt="Logo" className="h-16 w-16 ml-16" /> {/* Adjust logo size as needed */}
             </Link>
           </div>
   
