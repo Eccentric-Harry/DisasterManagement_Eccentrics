@@ -121,118 +121,110 @@ const DisasterDetail = () => {
 
     return (
         <>
-        <Navbar2 />
+            <Navbar2 />
             {disaster ? (
                 <>
-                <h1 style={{color:"rgb(27, 40, 223)",textAlign:"center",marginTop:'5px'}}>{disaster.disasterType}</h1>
-                <div className="disasterDetailMainDiv">
-                    <div className="disasterImageDiv">
-                        <h2 style={{color:"#1B4552",textAlign:"center",marginTop:'0px',padding:"10px"}}>Image</h2>
-                        {disaster.image ? (
-                            <img src={require(`../../uploads/${disaster.image}`)} alt="Disaster" className="disasterImage" />
-                        ) : (
-                            'N/A'
-                        )}
-                    </div>
-                    <div className="disasterInfoDiv" style={{marginTop:"50px"}}>
-                        <div>
-                            <h2>Severity</h2>
-                            <p>{disaster.severity}</p>
-                        </div>
-                        <div>
-                            <h2>Description</h2>
-                            <p>{disaster.description}</p>
-                        </div>
-                        <div>
-                            <h2>Location</h2>
-                            {disaster.formattedAddress ? (
-                                <p>{disaster.formattedAddress}</p>
+                    <h1 className="text-blue-700 text-center mt-4 mb-6 text-3xl font-bold">{disaster.disasterType}</h1>
+                    <div className="flex flex-col md:flex-row p-4 space-y-6 md:space-y-0 md:space-x-6">
+                        <div className="flex-1 bg-gray-100 p-4 rounded-lg shadow-md">
+                            <h2 className="text-blue-800 text-center text-xl mb-4">Image</h2>
+                            {disaster.image ? (
+                                <img src={require(`../../uploads/${disaster.image}`)} alt="Disaster" className="w-full h-auto rounded-lg shadow-md" />
                             ) : (
-                                'N/A'
+                                <p className="text-center text-gray-500">N/A</p>
                             )}
                         </div>
-                        <div className="disasterDetailMainDiv" style={{display:"block"}}>
-                        <button className="takeActionBtn" style={{height:"50px",width:"200px",marginTop:"10px",marginRight:"10px"}}
-                            onClick={() => handleResourceAllocation()}
-                        >
-                            Allocate Resources
-                        </button>
-
-                        <button className="takeActionBtn" style={{height:"50px",width:"200px",marginTop:"10px",marginLeft:"10px"}}
-                            onClick={() => handleMakeReport()}
-                        >
-                            Make a Report
-                        </button>
-
-                    </div>
-                    
-                    </div>
-                    
-                    {/* Reources and Reports Div */}
-
-                    
-
-                </div> 
-                <div className="disasterDetailMainDiv" style={{marginTop:"50px"}}> 
-                <div className="disasterInfoDiv">
-                    <h2 style={{textAlign:"center"}}>Resources Allocated</h2>
-                    {resources.length > 0 ? (
-                        resources.map(resource => (
-                            <div key={resource._id}>
-                                <div>
-                                    <h2>Vehicle</h2>
-                                    <p>{resource.vehicle}</p>
-                                </div>
-                                <div>
-                                    <h2>Personnel</h2>
-                                    <p>{resource.personnel}</p>
-                                </div>
-                                <div>
-                                    <h2>Equipment</h2>
-                                    <p>{resource.equipment}</p>
-                                </div>
-                                <div>
-                                    <h2>Supplies</h2>
-                                    <p>{resource.supplies}</p>
-                                </div>
-                                <div>
-                                    <h2>Facilities</h2>
-                                    <p>{resource.facilities}</p>
-                                </div>
+                        <div className="flex-1 bg-gray-100 p-4 rounded-lg shadow-md mt-6 md:mt-0">
+                            <div className="mb-4">
+                                <h2 className="text-lg font-semibold">Severity</h2>
+                                <p className="text-gray-700">{disaster.severity}</p>
                             </div>
-                        ))
-                    ) : (
-                        <p>No resources allocated.</p>
-                    )}
-                </div>
-                <div className="disasterInfoDiv">
-                    <h2 style={{textAlign:"center"}}>Reports</h2>
-                    {reports.length > 0 ? (
-                        reports.map(report => (
-                            <div key={report._id}>
-                                <h3>{report.title}</h3>
-                                <p>{report.description}</p>
+                            <div className="mb-4">
+                                <h2 className="text-lg font-semibold">Description</h2>
+                                <p className="text-gray-700">{disaster.description}</p>
                             </div>
-                        ))
-                    ) : (
-                        <p>No reports available.</p>
-                    )}
-                </div>
-                
-                </div>
-                
-                <button className="takeActionBtn" style={{height:"50px",width:"200px",marginLeft:"40%",marginTop:"0px"}}
-                    onClick={() => handleDownloadReport()}
-                    >
-                    Download Report
-                </button>
-
+                            <div className="mb-4">
+                                <h2 className="text-lg font-semibold">Location</h2>
+                                <p className="text-gray-700">{disaster.formattedAddress || 'N/A'}</p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0">
+                                <button 
+                                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    onClick={() => handleResourceAllocation()}
+                                >
+                                    Allocate Resources
+                                </button>
+                                <button 
+                                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    onClick={() => handleMakeReport()}
+                                >
+                                    Make a Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="space-y-6 mt-8">
+                        <div className="bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-200">
+                            <h2 className="text-center text-xl font-semibold mb-6 text-blue-700">Resources Allocated</h2>
+                            {resources.length > 0 ? (
+                                resources.map(resource => (
+                                    <div key={resource._id} className="mb-6 p-4 bg-white rounded-lg shadow-md border border-gray-300">
+                                        <div className="mb-4">
+                                            <h3 className="text-lg font-semibold text-blue-800">Vehicle</h3>
+                                            <p className="text-gray-800">{resource.vehicle}</p>
+                                        </div>
+                                        <div className="mb-4">
+                                            <h3 className="text-lg font-semibold text-blue-800">Personnel</h3>
+                                            <p className="text-gray-800">{resource.personnel}</p>
+                                        </div>
+                                        <div className="mb-4">
+                                            <h3 className="text-lg font-semibold text-blue-800">Equipment</h3>
+                                            <p className="text-gray-800">{resource.equipment}</p>
+                                        </div>
+                                        <div className="mb-4">
+                                            <h3 className="text-lg font-semibold text-blue-800">Supplies</h3>
+                                            <p className="text-gray-800">{resource.supplies}</p>
+                                        </div>
+                                        <div className="mb-4">
+                                            <h3 className="text-lg font-semibold text-blue-800">Facilities</h3>
+                                            <p className="text-gray-800">{resource.facilities}</p>
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="text-center text-gray-500">No resources allocated.</p>
+                            )}
+                        </div>
+                        <div className="bg-gray-50 p-6 rounded-lg shadow-lg border border-gray-200">
+                            <h2 className="text-center text-xl font-semibold mb-6 text-blue-700">Reports</h2>
+                            {reports.length > 0 ? (
+                                reports.map(report => (
+                                    <div key={report._id} className="mb-6 p-4 bg-white rounded-lg shadow-md border border-gray-300">
+                                        <h3 className="text-lg font-semibold text-blue-800">{report.title}</h3>
+                                        <p className="text-gray-800">{report.description}</p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="text-center text-gray-500">No reports available.</p>
+                            )}
+                        </div>
+                    </div>
+                    <div className="flex justify-center mt-8">
+                        <button 
+                            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            onClick={() => handleDownloadReport()}
+                        >
+                            Download Report
+                        </button>
+                    </div>
                 </>
             ) : (
-                <p>Loading...</p>
+                <p className="text-center text-gray-500">Loading...</p>
             )}
         </>
     );
+    
+    
 };
 
 export default DisasterDetail;

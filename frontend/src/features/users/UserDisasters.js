@@ -26,38 +26,40 @@ const UserDisasters = () => {
 
     return (
         <>
-            <h1 style={{color:"rgb(27, 40, 223)",textAlign:"center",marginTop:'5px'}}>My Disasters</h1>
-            <div className="disastersDiv">
+            <h1 className="text-blue-700 text-center mt-2 mb-4 text-2xl font-bold">My Disasters</h1>
+            <div className="overflow-x-auto p-4">
                 {disaster ? (
-                    <table className="disasterTable">
-                        <thead>
+                    <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+                        <thead className="bg-blue-500 text-white">
                             <tr>
-                                <th>Type</th>
-                                <th>Description</th>
-                                <th>Severity</th>
-                                <th>Update Disaster</th>
+                                <th className="py-2 px-4 border-b">Type</th>
+                                <th className="py-2 px-4 border-b">Description</th>
+                                <th className="py-2 px-4 border-b">Severity</th>
+                                <th className="py-2 px-4 border-b">Update Disaster</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr key={disaster._id}>
-                                <td>{disaster.disasterType}</td>
-                                <td>{disaster.description}</td>
-                                <td>{disaster.severity}</td>
-                                <td>
+                            <tr key={disaster._id} className="hover:bg-gray-100">
+                                <td className="py-2 px-4 border-b">{disaster.disasterType}</td>
+                                <td className="py-2 px-4 border-b">{disaster.description}</td>
+                                <td className="py-2 px-4 border-b">{disaster.severity}</td>
+                                <td className="py-2 px-4 border-b">
                                     <Link to={{ pathname: `../disasters/${disaster._id}`, state: { id: disaster._id } }}>
-                                        <button className="takeActionBtn">Update</button>
+                                        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                                            Update
+                                        </button>
                                     </Link>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 ) : (
-                    <p>No disasters reported.</p>
+                    <p className="text-center text-gray-500">No disasters reported.</p>
                 )}
             </div>
-
         </>
     );
+    
 }
 
 export default UserDisasters;

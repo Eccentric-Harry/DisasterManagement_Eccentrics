@@ -12,17 +12,29 @@ const Navbar2 = () => {
     }
 
   return (
-    <div className='navbar'>
-      {/* <Link to = '/'><img src={logo} alt="" className='logo'/> </Link> */}
-      <div className='logo-text'>SRT <span>Emergency Response</span></div> 
-      <ul>
-        {/* <li><Link to = '/' className='link' >Home</Link></li> */}
-        {/* <li><Link to = '/login' className='link'>Login</Link></li> */}
-        <li style={{paddingLeft:"500px"}}>
-            <button onClick={handleLogout} className='takeActionBtn'>Logout</button>
-        </li>
-      </ul>
-    </div>
+    <div className="navbar bg-black text-white shadow-md py-2 px-8 flex justify-between items-center sticky top-0 z-50">
+  {/* Logo Section */}
+  <div className="flex items-center">
+    <Link to="/">
+      {/* Adjust the logo size as needed */}
+      <img src={logo} alt="Logo" className="h-12 w-12 mr-3 object-contain" /> {/* Adjust height and width as needed */}
+    </Link>
+  </div>
+
+  {/* Navigation Buttons */}
+  <ul className="flex items-center gap-4">
+    <li className="ml-auto">
+      <button
+        onClick={handleLogout}
+        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors focus:outline-none focus:ring-2 focus:ring-red-300"
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+</div>
+
+
   )
 }
 
