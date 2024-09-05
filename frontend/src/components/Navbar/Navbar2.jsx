@@ -3,7 +3,7 @@ import logo from '../../assets/logo.jpg'
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Navbar2 = () => {
+const Navbar2 = () => { 
     const navigate = useNavigate();
 
     const handleLogout = () => {
