@@ -5,10 +5,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [role, setRole] = useState('user');
+
+    const [username,setUsername] = useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [role,setRole] = useState('user');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -20,9 +21,7 @@ const Register = () => {
                 password,
                 role,
             });
-            if (res.data) {
-                navigate("/login");
-            }
+            res.data && navigate("/login");
         } catch (err) {
             console.log(err);
         }
@@ -31,12 +30,12 @@ const Register = () => {
     return (
         <>
             <Navbar />
-            <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-                <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-                    <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">Register</h2>
+            <div className="flex items-center justify-center min-h-screen bg-gray-100">
+                <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+                    <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Register</h2>
                     <form className="space-y-4" onSubmit={handleSubmit}>
                         <div>
-                            <label htmlFor="username" className="block text-gray-700 font-medium mb-1">
+                            <label htmlFor="username" className="block text-sm font-medium text-gray-700">
                                 <strong>Username</strong>
                             </label>
                             <input
@@ -45,12 +44,12 @@ const Register = () => {
                                 placeholder="Username"
                                 autoComplete="off"
                                 name="username"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
                         <div>
-                            <label htmlFor="email" className="block text-gray-700 font-medium mb-1">
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                                 <strong>Email</strong>
                             </label>
                             <input
@@ -59,12 +58,12 @@ const Register = () => {
                                 placeholder="Enter Email"
                                 autoComplete="off"
                                 name="email"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
-                            <label htmlFor="password" className="block text-gray-700 font-medium mb-1">
+                            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                                 Password
                             </label>
                             <input
@@ -72,45 +71,50 @@ const Register = () => {
                                 required
                                 placeholder="Enter Password"
                                 name="password"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
-                        <div className="flex items-center space-x-4 mb-4">
-                            <label htmlFor="adminRadio" className="inline-flex items-center">
+                        <div className="flex items-center space-x-4 mt-4">
+                            <div className="flex items-center">
                                 <input
                                     type="radio"
                                     name="role"
                                     value="admin"
-                                    className="form-radio text-blue-600"
+                                    id="adminRadio"
+                                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                                     checked={role === "admin"}
                                     onChange={(e) => setRole(e.target.value)}
                                 />
-                                <span className="ml-2 text-gray-700">Admin</span>
-                            </label>
-                            <label htmlFor="userRadio" className="inline-flex items-center">
+                                <label htmlFor="adminRadio" className="ml-2 block text-sm font-medium text-gray-700">
+                                    Admin
+                                </label>
+                            </div>
+                            <div className="flex items-center">
                                 <input
                                     type="radio"
                                     name="role"
                                     value="user"
-                                    className="form-radio text-blue-600"
+                                    id="userRadio"
+                                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300"
                                     checked={role === "user"}
                                     onChange={(e) => setRole(e.target.value)}
                                 />
-                                <span className="ml-2 text-gray-700">User</span>
-                            </label>
+                                <label htmlFor="userRadio" className="ml-2 block text-sm font-medium text-gray-700">
+                                    User
+                                </label>
+                            </div>
                         </div>
                         <button
                             type="submit"
-                            className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
+                            className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                         >
                             Register
                         </button>
                     </form>
-
-                    <p className="text-gray-700 text-center mt-4">Already have an account?</p>
+                    <p className="text-center text-gray-600 mt-4">Already have an account?</p>
                     <div className="text-center mt-2">
-                        <Link to="/login" className="text-blue-600 hover:underline">
+                        <Link to="/login" className="text-blue-600 hover:text-blue-800">
                             Login
                         </Link>
                     </div>
@@ -118,6 +122,6 @@ const Register = () => {
             </div>
         </>
     );
-}
+};
 
 export default Register;
