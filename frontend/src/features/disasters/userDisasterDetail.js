@@ -100,119 +100,147 @@ const UserDisasterDetail = () => {
 
     return (
         <>
-            {disaster ? (
-                editing ? (
-                    
-                    <div className="disasterDetailMainDiv">
-                        <div className="disasterReporting-form">
-                            <form onSubmit={handleSubmit} className="dsr-form" >
-                                <div className="form-group">
-                                    <label className="form-label">Disaster Type:</label>
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        name="disasterType"
-                                        value={formData.disasterType}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label">Severity:</label>
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        name="severity"
-                                        value={formData.severity}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label">Description:</label>
-                                    <textarea
-                                        className="form-control"
-                                        name="description"
-                                        value={formData.description}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label">Location Type:</label>
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        name="locationType"
-                                        value={formData.locationType}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label">Location Coordinates:</label>
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        name="locationCoordinates"
-                                        value={formData.locationCoordinates}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label className="form-label">Image:</label>
-                                    <input
-                                        className="form-control"
-                                        type="file"
-                                        name="image"
-                                        onChange={handleFileChange}
-                                    />
-                                </div>
-                                <div className="form-group" style={{display:"block"}}>
-                                    <button type="submit" style={{marginRight:"10px"}} className="takeActionBtn">Save</button>
-                                    <button type="button" onClick={() => setEditing(false)} style={{marginLeft:"10px"}} className="takeActionBtn">Cancel</button>
-                                </div>
-                            </form>
-                            </div>
-                        </div>
-                ) : (
-                    <>
-                        <h1 style={{ color: "rgb(27, 40, 223)", textAlign: "center", marginTop: '5px' }}>{disaster.disasterType}</h1>
-                        <div className="disasterDetailMainDiv">
-                            <div className="disasterImageDiv">
-                                <h2 style={{ color: "#1B4552", textAlign: "center", marginTop: '0px', padding: "10px" }}>Image</h2>
-                                {disaster.image ? (
-                                    <img src={require(`../../uploads/${disaster.image}`)} alt="Disaster" className="disasterImage" />
-                                ) : (
-                                    'N/A'
-                                )}
-                            </div>
-                            <div className="disasterInfoDiv">
-                                <div>
-                                    <h2>Severity</h2>
-                                    <p>{disaster.severity}</p>
-                                </div>
-                                <div>
-                                    <h2>Description</h2>
-                                    <p>{disaster.description}</p>
-                                </div>
-                                <div>
-                                    <h2>Location</h2>
-                                    {disaster.formattedAddress ? (
-                                        <p>{disaster.formattedAddress}</p>
-                                    ) : (
-                                        'N/A'
-                                    )}
-                                </div>
-                                <div className="disasterDetailMainDiv">
-                                    <button onClick={() => setEditing(true)} className="takeActionBtn" style={{height:"50px",width:"200px",marginTop:"10px"}}>Edit</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </>
-                )
+          {disaster ? (
+            editing ? (
+              <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Disaster Type
+                    </label>
+                    <input
+                      type="text"
+                      name="disasterType"
+                      value={formData.disasterType}
+                      onChange={handleChange}
+                      className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Severity
+                    </label>
+                    <input
+                      type="text"
+                      name="severity"
+                      value={formData.severity}
+                      onChange={handleChange}
+                      className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Description
+                    </label>
+                    <textarea
+                      name="description"
+                      value={formData.description}
+                      onChange={handleChange}
+                      className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Location Type
+                    </label>
+                    <input
+                      type="text"
+                      name="locationType"
+                      value={formData.locationType}
+                      onChange={handleChange}
+                      className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Location Coordinates
+                    </label>
+                    <input
+                      type="text"
+                      name="locationCoordinates"
+                      value={formData.locationCoordinates}
+                      onChange={handleChange}
+                      className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Image
+                    </label>
+                    <input
+                      type="file"
+                      name="image"
+                      onChange={handleFileChange}
+                      className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    />
+                  </div>
+                  <div className="flex space-x-4">
+                    <button
+                      type="submit"
+                      className="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 transition-colors focus:outline-none"
+                    >
+                      Save
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditing(false)}
+                      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors focus:outline-none"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
             ) : (
-                <p>Loading...</p>
-            )}
+              <>
+                <h1 className="text-blue-600 text-center text-xl font-semibold mt-2">
+                  {disaster.disasterType}
+                </h1>
+                <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <h2 className="text-center text-lg font-semibold text-gray-700">
+                      Image
+                    </h2>
+                    {disaster.image ? (
+                      <img
+                        src={require(`../../uploads/${disaster.image}`)}
+                        alt="Disaster"
+                        className="w-full h-64 object-cover rounded"
+                      />
+                    ) : (
+                      <p className="text-center text-gray-500">N/A</p>
+                    )}
+                  </div>
+                  <div className="space-y-4">
+                    <div>
+                      <h2 className="font-semibold text-gray-800">Severity</h2>
+                      <p className="text-gray-600">{disaster.severity}</p>
+                    </div>
+                    <div>
+                      <h2 className="font-semibold text-gray-800">Description</h2>
+                      <p className="text-gray-600">{disaster.description}</p>
+                    </div>
+                    <div>
+                      <h2 className="font-semibold text-gray-800">Location</h2>
+                      <p className="text-gray-600">
+                        {disaster.formattedAddress || 'N/A'}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setEditing(true)}
+                      className="mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors focus:outline-none"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+              </>
+            )
+          ) : (
+            <p className="text-center text-gray-500">Loading...</p>
+          )}
         </>
-    );
-};
-
-export default UserDisasterDetail;
+      );
+      
+    }
+export default UserDisasterDetail
