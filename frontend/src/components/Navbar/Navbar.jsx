@@ -2,23 +2,24 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/logo.jpg"
+import './Navbar.css'; 
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-black text-white shadow-md z-50">
-      <div className="max-w-full mx-auto px-4"> {/* Removed width limitation and reduced padding */}
+    <header className="fixed top-0 left-0 right-0 bg-gray-700  backdrop-blur-md text-white shadow-md z-50 transition-all duration-300 ease-in-out">
+      <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-auto">
-          {/* Logo Section */}
+         
           <div className="flex-shrink-0">
             <Link to="/">
-              <img src={logo} alt="Logo" className="h-16 w-16 ml-16" /> {/* Adjust logo size as needed */}
+              <img src={logo} alt="Logo" className="h-16 w-16 ml-16 rounded-xl" />
             </Link>
           </div>
   
-          {/* Navigation Links */}
-          <nav className="flex space-x-8 ml-auto"> {/* Reduced space between links */}
+
+          <nav className="flex space-x-8 ml-auto">
             <button
               onClick={() => navigate('/')}
               className='inline-block px-6 py-2 duration-200 hover:bg-white hover:text-black hover:font-bold rounded-full'
@@ -34,7 +35,6 @@ const Navbar = () => {
             </button>
 
             <button
-
               onClick={() => navigate('/activeIncidents')}
               className="text-white hover:text-gray-300 transition"
             >

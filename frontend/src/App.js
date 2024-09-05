@@ -14,6 +14,9 @@ import UserDisasterDetail from './features/disasters/userDisasterDetail';
 import ResourceForm from './features/disasters/disasterResource';
 import ReportForm from './features/disasters/disasterReportForm';
 import ActiveIncidents from './features/disasters/activeIncidents'; // Import the new component
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 function App() {
   return (
