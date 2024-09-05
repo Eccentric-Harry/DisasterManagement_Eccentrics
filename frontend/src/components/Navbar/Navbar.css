@@ -1,0 +1,36 @@
+.navbar{
+    width:100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background:none;
+    padding: 15px 7%;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+li .link{
+    /* color: rgb(69, 118, 163); */
+    font-size: 1.4rem;
+    color:  rgb(27, 40, 223);
+    text-decoration: none;
+}
+
+.link:hover{
+    /* background-color: skyblue; */
+    border-radius: 10px;
+    color: #0F172A;
+}
+
+.logo-text{
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(27, 40, 223);
+    margin-left: 20px;
+}
+
+.logo-text:hover{
+    color: red;
+}

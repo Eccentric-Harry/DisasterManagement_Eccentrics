@@ -1,0 +1,527 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* || VARIABLES */
+
+:root {
+  /* COLORS */
+  /* --BGCOLOR: #0F172A; */
+  --BGCOLOR: white;
+  --BORDER-COLOR: #FFF;
+  --COLOR: #FFF;
+  --ERROR: firebrick;
+  --INACTIVE: lightgray;
+  --LINK-COLOR: whitesmoke;
+  --LINK-HOVER: rgba(245, 245, 245, 0.9);
+  --NOTE-BGCOLOR: hsla(240, 64%, 27%, 0.65);
+  --STATUS-COMPLETE: limegreen;
+  --STATUS-OPEN: firebrick;
+  --TABLE-BGCOLOR: #FFF;
+  --TABLE-COLOR: #000;
+}
+
+/* || UTILITY CLASSES */
+.errmsg {
+  display: inline-block;
+  background-color: var(--TABLE-BGCOLOR);
+  color: var(--ERROR);
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.icon-button {
+  width: 48px;
+  height: 48px;
+  font-size: 2.5rem;
+  background-color: transparent;
+  border: none;
+  color: var(--COLOR);
+  display: grid;
+  place-content: center;
+}
+
+.icon-button:hover,
+.icon-button:focus-visible {
+  transform: scale(1.2);
+}
+
+.icon-button[disabled] {
+  visibility: hidden;
+}
+
+/* || GENERAL STYLES */
+
+body {
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  background-color: var(--BGCOLOR);
+  color: var(--COLOR);
+  background-image: url('./img/background2.jpeg');
+  background-size: cover;
+  background-position: top right;
+  background-blend-mode: multiply;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  /* React root div */
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+a:visited {
+  color: var(--LINK-COLOR);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--LINK-HOVER);
+}
+
+/* || PAGES */
+
+.public,
+.welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.public {
+  padding: 1em;
+  flex-grow: 1;
+}
+
+.public__main,
+.login {
+  flex-grow: 1;
+  border-top: 2px solid var(--BORDER-COLOR);
+  border-bottom: 2px solid var(--BORDER-COLOR);
+  padding: 1em 0;
+}
+
+.public__addr {
+  margin-top: 1em;
+}
+
+.welcome a::before {
+  content: "➜ "
+}
+
+/* || DASH HEADER, CONTAINER & FOOTER */
+
+.dash-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--BGCOLOR);
+  padding: 0 0.5em;
+  border-bottom: 1px solid var(--BORDER-COLOR);
+}
+
+.dash-header__container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dash-header__nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+
+.dash-container {
+  padding: 0.75em 0.5em 0.5em;
+  flex-grow: 1;
+}
+
+.dash-footer {
+  font-size: 1rem;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  background-color: var(--BGCOLOR);
+  padding: 0.5em;
+  border-top: 1px solid var(--BORDER-COLOR);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  gap: 1em;
+  border-radius: 10px;
+  height: 65px;
+}
+
+.dash-footer__button {
+  font-size: 1rem;
+  width: auto;
+  height: auto;
+}
+
+/* My CSS */
+.container{
+  width:100vw;
+  min-height: 100vh;
+  background: #ced8ff;
+}
+
+.logo{
+  width: 75px;
+  cursor: pointer;
+  border-radius: 50%;
+  
+}
+
+ul{
+  flex:1;
+  list-style-type: none;
+  text-align: center;
+}
+
+ul li{
+  display: inline-block;
+  margin: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #000;
+}
+
+
+/* Get Started Button */
+.getStartedButton {
+  display: inline-block;
+  border-radius: 25px;
+  background-color: #057DCD;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  /* margin: 5px; */
+  margin-left: 200px;
+  margin-top: 30px;
+}
+
+.getStartedButton:hover {
+  background-color: #0F172A;
+  color: #FFFFFF;
+}
+
+.mainLogin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  /* margin: 45px auto; */
+  margin-top: 50px;
+}
+
+.loginMajor{
+  width:auto;
+  height:fit-content;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: #057DCD 2px solid;
+  align-items: center;
+}
+
+/* Styling for the form container */
+.login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Styling for form labels */
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styling for form inputs */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* Styling for the login button */
+.login-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for disaster reporting */
+.dsReportingDiv{
+  width: auto;
+  height:500px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: #057DCD 2px solid;
+  align-items: center;
+}
+
+/* Styling for the form container */
+.disasterReporting-form{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+    margin-top: 10px;
+    height: 475px;
+}
+
+/* Disaster reporting form*/
+.dsr-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    margin: 10px;
+
+}
+
+.reportDisaster-button{
+  display: inline-block;
+  border-radius: 25px;
+  background-color: #057DCD;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 15px;
+  width: fit-content;
+  transition: all 0.5s;
+  cursor: pointer;
+  /* margin: 5px; */
+  /* margin-left: 200px; */
+  /* margin-top: 30px; */
+}
+
+.reportDisaster-button:hover {
+  background-color: #0F172A;
+  color: #FFFFFF;
+}
+
+@keyframes carousel {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Disasters Div */
+.disastersDiv {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+/* .dsReportingDiv h1 {
+  text-align: center;
+  color: #333;
+} */
+
+.disastersDiv ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.disastersDiv li {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.disastersDiv li h2 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.disastersDiv li p {
+  margin: 0;
+  color: #666;
+}
+
+/* Disasters Table */
+.disasterTable {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+.disasterTable th, .disasterTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.disasterTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.disasterTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #007bff;
+  /* background-color: rgb(27, 40, 223); */
+  /* color: rgb(27, 40, 223); */
+  color: white;
+}
+
+.disasterTable th:hover {
+  /* background-color: white; */
+  background: transparent;
+  /* color: red; */
+  color:#0F172A;
+}
+
+.disasterTable td {
+  text-align: center;
+  color: #0F172A;
+}
+
+.takeActionBtn {
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #057DCD;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 15px;
+  width: fit-content;
+  transition: all 0.5s;
+  cursor: pointer;
+  /* margin: 5px; */
+  /* margin-left: 200px; */
+  /* margin-top: 30px; */
+}
+
+.takeActionBtn:hover {
+  background-color: #0F172A;
+  color: #FFFFFF;
+}
+
+/* Disaster Details Page */
+.disasterDetailMainDiv{
+  display: flex;
+  justify-content: space-between; /* Changed from align-items */
+  height: 50vh;
+  margin: 10px auto;
+
+}
+
+.disasterImageDiv{
+  width: 20%;
+  height: 100%;
+  
+  /* border-radius: 10px; */
+  /* border:#057DCD 2px solid; */
+}
+
+.disasterInfoDiv{
+  width: 50%;
+  height: 75%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: #057DCD 2px solid;
+  display: flex; /* Added this to align items vertically */
+  flex-direction: column; /* Added this to align items vertically */
+  /* Added this to center items vertically */
+  /* justify-content: center;  */
+  
+}
+
+.disasterInfoDiv > div {
+  padding: 20px;
+  display: flex;
+  flex-direction: row; /* Align h2 and p elements in a row */
+  justify-content: space-between; /* Adjust this as needed */
+  align-items: center; /* Align items vertically */
+}
+
+.disasterInfoDiv > div > p {
+  margin: 0;
+  text-align: center;
+}
+
+.disasterInfoDiv h2{
+  color: rgb(27, 40, 223);
+}
+
+.disasterInfoDiv p{
+  color: #1B4552;
+  font-size: 1.2rem;
+}
+
+.disasterImage{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  /* padding: 10px; */
+}
+
+/* Admin */
+.admin-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.admin-user .form-label {
+  margin: 0 10px;
+}
+
+.admin-user .form-control {
+  margin-right: 20px;
+}
