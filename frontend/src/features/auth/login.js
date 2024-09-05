@@ -19,8 +19,7 @@ const Login = () => {
                 password,
             });
 
-            // console.log(res.data);
-            if(res.data?.accessToken){
+            if (res.data?.accessToken) {
                 localStorage.setItem("token", res.data.accessToken);
 
                 const getUserIdFromToken = (token) => {
@@ -31,20 +30,16 @@ const Login = () => {
                 };
 
                 const userId = getUserIdFromToken(res.data.accessToken);
-                // console.log(userId);
                 localStorage.setItem('userId', userId);
                 
                 if (res.data) {
-                    if(role === 'admin'){
+                    if (role === 'admin') {
                         navigate("/dash/admin");
-                    }else{
+                    } else {
                         navigate("/dash/user");
                     }
-                   
                 }
             }
-
-            
         } catch (err) {
             console.log(err);
             setLoginError(true); // Show error message
@@ -54,12 +49,12 @@ const Login = () => {
     return (
         <>
             <Navbar />
-            <div className="mainLogin">
-                <div className="loginMajor">
-                    <h2 style={{ color: "#1B4552", textAlign: "center", marginTop: "5px" }}>Login</h2>
-                    <form className="login-form" onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="email" className="form-label">
+            <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+                <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+                    <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">Login</h2>
+                    <form className="space-y-4" onSubmit={handleSubmit}>
+                        <div>
+                            <label htmlFor="email" className="block text-gray-700 font-medium mb-1">
                                 <strong>Email</strong>
                             </label>
                             <input
@@ -68,12 +63,12 @@ const Login = () => {
                                 placeholder="Enter Email"
                                 autoComplete="off"
                                 name="email"
-                                className="form-control"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="password" className="form-label">
+                        <div>
+                            <label htmlFor="password" className="block text-gray-700 font-medium mb-1">
                                 Password
                             </label>
                             <input
@@ -81,47 +76,50 @@ const Login = () => {
                                 required
                                 placeholder="Enter Password"
                                 name="password"
-                                className="form-control"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
-                        <div className="admin-user">
-                        <label htmlFor="admin" className="form-label">
-                            Admin
-                        </label>
-                        <input
-                            type="radio"
-                            name="role"
-                            value="admin"
-                            className="form-control"
-                            checked={role === "admin"}
-                            onChange={(e) => setRole(e.target.value)}
-                            />
-                        <label htmlFor="user" className="form-label">
-                            User
-                        </label>
-                        <input
-                            type="radio"
-                            name="role"
-                            value="user"
-                            className="form-control"
-                            checked={role === "user"}
-                            onChange={(e) => setRole(e.target.value)}/>
-                            
-                    </div>
-                        <button type="submit" className="login-button">
+                        <div className="flex items-center space-x-4 mb-4">
+                            <label htmlFor="admin" className="inline-flex items-center">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="admin"
+                                    className="form-radio text-blue-600"
+                                    checked={role === "admin"}
+                                    onChange={(e) => setRole(e.target.value)}
+                                />
+                                <span className="ml-2 text-gray-700">Admin</span>
+                            </label>
+                            <label htmlFor="user" className="inline-flex items-center">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="user"
+                                    className="form-radio text-blue-600"
+                                    checked={role === "user"}
+                                    onChange={(e) => setRole(e.target.value)}
+                                />
+                                <span className="ml-2 text-gray-700">User</span>
+                            </label>
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
+                        >
                             Login
                         </button>
                     </form>
 
-                    <p style={{ color: "#1B4552", textAlign: "center", margin: "10px" }}>Don't have an account?</p>
-                    <div style={{ textAlign: "center", margin: "10px" }}>
-                        <Link to="/register" style={{ color: "#1B4552" }}>
+                    <p className="text-gray-700 text-center mt-4">Don't have an account?</p>
+                    <div className="text-center mt-2">
+                        <Link to="/register" className="text-blue-600 hover:underline">
                             Sign Up
                         </Link>
                     </div>
 
-                    {loginError && <p style={{ color: "red", textAlign: "center" }}>Incorrect email or password</p>}
+                    {loginError && <p className="text-red-500 text-center mt-4">Incorrect email or password</p>}
                 </div>
             </div>
         </>

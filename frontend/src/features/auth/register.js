@@ -5,11 +5,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-
-    const [username,setUsername] = useState('');
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-    const [role,setRole] = useState('user');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [role, setRole] = useState('user');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -21,7 +20,9 @@ const Register = () => {
                 password,
                 role,
             });
-            res.data && navigate("/login");
+            if (res.data) {
+                navigate("/login");
+            }
         } catch (err) {
             console.log(err);
         }
@@ -29,89 +30,92 @@ const Register = () => {
 
     return (
         <>
-        <Navbar/>
-        <div className="mainLogin">
-            <div className="loginMajor">
-                <h2 style={{color:"#1B4552",textAlign:"center",marginTop:'5px'}}>Register</h2>
-                <form className="login-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="username" className="form-label">
-                            <strong>Username</strong>
-                        </label>
-                        <input
-                            type="text"
-                            required
-                            placeholder="Username"
-                            autoComplete="off"
-                            name="username"
-                            className="form-control"
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email" className="form-label">
-                            <strong>Email</strong>
-                        </label>
-                        <input
-                            type="email"
-                            required
-                            placeholder="Enter Email"
-                            autoComplete="off"
-                            name="email"
-                            className="form-control"
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password" className="form-label">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            required
-                            placeholder="Enter Password"
-                            name="password"
-                            className="form-control"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <div className="admin-user">
-                        <label htmlFor="adminRadio" className="form-label">
-                            Admin
-                        </label>
-                        <input
-                            type="radio"
-                            name="adminRadio"
-                            value="admin"
-                            className="form-control"
-                            checked={role === "admin"}
-                            onChange={(e) => setRole(e.target.value)}
+            <Navbar />
+            <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+                <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+                    <h2 className="text-2xl font-semibold text-gray-900 text-center mb-4">Register</h2>
+                    <form className="space-y-4" onSubmit={handleSubmit}>
+                        <div>
+                            <label htmlFor="username" className="block text-gray-700 font-medium mb-1">
+                                <strong>Username</strong>
+                            </label>
+                            <input
+                                type="text"
+                                required
+                                placeholder="Username"
+                                autoComplete="off"
+                                name="username"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                onChange={(e) => setUsername(e.target.value)}
                             />
-                        <label htmlFor="userRadio" className="form-label">
-                            User
-                        </label>
-                        <input
-                            type="radio"
-                            name="userRadio"
-                            value="user"
-                            className="form-control"
-                            checked={role === "user"}
-                            onChange={(e) => setRole(e.target.value)}/>
-                            
-                    </div>
-                    <button type="submit" className="login-button">
-                        Register
-                    </button>
-                </form>
+                        </div>
+                        <div>
+                            <label htmlFor="email" className="block text-gray-700 font-medium mb-1">
+                                <strong>Email</strong>
+                            </label>
+                            <input
+                                type="email"
+                                required
+                                placeholder="Enter Email"
+                                autoComplete="off"
+                                name="email"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="block text-gray-700 font-medium mb-1">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                required
+                                placeholder="Enter Password"
+                                name="password"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+                        <div className="flex items-center space-x-4 mb-4">
+                            <label htmlFor="adminRadio" className="inline-flex items-center">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="admin"
+                                    className="form-radio text-blue-600"
+                                    checked={role === "admin"}
+                                    onChange={(e) => setRole(e.target.value)}
+                                />
+                                <span className="ml-2 text-gray-700">Admin</span>
+                            </label>
+                            <label htmlFor="userRadio" className="inline-flex items-center">
+                                <input
+                                    type="radio"
+                                    name="role"
+                                    value="user"
+                                    className="form-radio text-blue-600"
+                                    checked={role === "user"}
+                                    onChange={(e) => setRole(e.target.value)}
+                                />
+                                <span className="ml-2 text-gray-700">User</span>
+                            </label>
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
+                        >
+                            Register
+                        </button>
+                    </form>
 
-                 <p style={{color:"#1B4552",textAlign:"center",margin:"10px"}}>Already have an account?</p>
-                 <div style={{textAlign:"center",margin:"10px"}}>
-                    <Link to="/login" style={{color:"#1B4552"}}>
-                        Login    
-                    </Link>
-                 </div>
+                    <p className="text-gray-700 text-center mt-4">Already have an account?</p>
+                    <div className="text-center mt-2">
+                        <Link to="/login" className="text-blue-600 hover:underline">
+                            Login
+                        </Link>
+                    </div>
+                </div>
             </div>
-        </div>
         </>
     );
 }
