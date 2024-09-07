@@ -6,16 +6,16 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const fs = require('fs');
-const csv = require('csv-parser'); // Import csv-parser to parse CSV files
-const axios = require('axios'); // Import axios to make HTTP requests
+const csv = require('csv-parser'); 
+const axios = require('axios'); 
 
-// Import custom modules using CommonJS
+
 const { logger, logEvents } = require('./middleware/logger');
 const errorHandler = require('./middleware/errorHandler');
 const corsOptions = require('./config/corsOptions');
 const connectDB = require('./config/dbConn');
 
-// Import routes using CommonJS
+
 const rootRoutes = require('./routes/root');
 const authRoutes = require('./routes/authRoutes');
 const disasterRoutes = require('./routes/disasterRoutes');
@@ -23,14 +23,14 @@ const resourceRoutes = require('./routes/resourceRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const downloadReportRoutes = require('./routes/downloadReportRoutes');
 
-// Initialize express app
+
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Connect to the database
+
 connectDB();
 
-// Middleware setup
+
 app.use(logger);
 app.use(cors(corsOptions));
 app.use(express.json());

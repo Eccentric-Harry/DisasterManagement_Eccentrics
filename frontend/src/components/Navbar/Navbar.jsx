@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-gray-700  backdrop-blur-md text-white shadow-md z-50 transition-all duration-300 ease-in-out">
+    <header className="fixed top-0 left-0 right-0 bg-gray-900  backdrop-blur-md text-white shadow-md z-50 transition-all duration-300 ease-in-out">
       <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-auto">
          
