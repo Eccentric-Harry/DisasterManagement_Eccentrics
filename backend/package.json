@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "start-python": "python scripts/twitter.py" 
+    "start-python": "python scripts/twitter.py"
   },
   "dependencies": {
     "axios": "^1.7.7",
@@ -27,6 +27,7 @@
     "nodemailer": "^6.9.13",
     "papaparse": "^5.4.1",
     "pdfkit": "^0.15.0",
+    "twilio": "^5.3.2",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
