@@ -15,6 +15,7 @@ const Navbar = () => {
   };
 
   return (
+<<<<<<< HEAD
     <>
       <header className="fixed top-0 left-0 right-0 bg-gray-600 backdrop-blur-md text-white shadow-md z-50 transition-all duration-300 ease-in-out">
         <div className="max-w-full mx-auto px-4">
@@ -64,6 +65,16 @@ const Navbar = () => {
                 Support
               </button>
             </nav>
+=======
+    <header className="fixed top-0 left-0 right-0 bg-gray-900  backdrop-blur-md text-white shadow-md z-50 transition-all duration-300 ease-in-out">
+      <div className="max-w-full mx-auto px-4">
+        <div className="flex items-center justify-between h-auto">
+         
+          <div className="flex-shrink-0">
+            <Link to="/">
+              <img src={logo} alt="Logo" className="h-16 w-16 ml-16 rounded-xl" />
+            </Link>
+>>>>>>> 97a6d2d5f0a39f3a3caab3a0c0b6e62291b474db
           </div>
         </div>
       </header>

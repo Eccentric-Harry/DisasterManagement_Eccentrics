@@ -14,6 +14,7 @@ import UserDisasterDetail from './features/disasters/userDisasterDetail';
 import ResourceForm from './features/disasters/disasterResource';
 import ReportForm from './features/disasters/disasterReportForm';
 import ActiveIncidents from './features/disasters/activeIncidents'; // Import the new component
+import Support from './pages/support'; // Import the new component
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -46,6 +47,7 @@ function App() {
 
         {/* New Route for Active Incidents */}
         <Route path="/activeIncidents" element={<ActiveIncidents />} />
+        <Route path="/support" element={<Support />} />
       </Route>
     </Routes>
   );
