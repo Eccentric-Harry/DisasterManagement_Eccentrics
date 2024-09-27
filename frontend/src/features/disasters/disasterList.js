@@ -24,7 +24,7 @@ const DisasterList = () => {
 
   return (
     <>
-        <h1 className="text-gray-800 text-center mt-4 mb-6 text-2xl font-bold">Reported Disasters</h1>
+        <h1 className="text-gray-600 text-center mt-4 mb-6 text-2xl font-bold">Reported Disasters</h1>
         <div className="overflow-x-auto p-4">
             {disasters.length > 0 ? (
                 <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">

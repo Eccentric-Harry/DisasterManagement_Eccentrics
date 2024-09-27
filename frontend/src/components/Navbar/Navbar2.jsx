@@ -1,5 +1,5 @@
 import './Navbar.css'
-import logo from '../../assets/logo.jpg'
+import logo from '../../assets/logo.png'
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ const Navbar2 = () => {
     }
 
   return (
-    <div className="navbar bg-black text-white shadow-md py-2 px-8 flex justify-between items-center sticky top-0 z-50">
+    <div className="navbar bg-gray-600 text-white shadow-md py-2 px-8 flex justify-between items-center sticky top-0 z-50">
   {/* Logo Section */}
   <div className="flex items-center">
     <Link to="/">

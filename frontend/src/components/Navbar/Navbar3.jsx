@@ -1,5 +1,5 @@
 import './Navbar.css'
-import logo from '../../assets/logo.jpg'
+import logo from '../../assets/logo.png'
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -36,7 +36,7 @@ const Navbar3 = () => {
               <li>
                   <button
                       onClick={() => navigate('/dash/user')}
-                      className="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-300"
+                      className="inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full"
                   >
                       Report Disaster
                   </button>
@@ -44,7 +44,7 @@ const Navbar3 = () => {
               <li>
                   <button
                       onClick={() => navigate('/dash/user/disasters')}
-                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300"
+                      className=" inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full"
                   >
                       My Disasters
                   </button>

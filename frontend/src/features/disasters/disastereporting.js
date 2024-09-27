@@ -100,7 +100,7 @@ const DisasterReporting = () => {
         <>
        <div className="flex justify-center items-center py-10 bg-gray-100">
   <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-    <h2 className="text-2xl font-semibold text-center text-blue-700 mb-6">Report a Disaster</h2>
+    <h2 className="text-2xl font-semibold text-center text-gray-600 mb-6">Report a Disaster</h2>
     <form className="space-y-4" onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="disasterType" className="form-label text-sm font-medium text-gray-700">

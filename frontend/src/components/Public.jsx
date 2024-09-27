@@ -1,114 +1,136 @@
-import React from 'react';
-import Slider from 'react-slick';
-import image3 from '../assets/img1.png';
-import Vijayawada from '../assets/floods.png';
-import Wayanad from '../assets/wind.png';
-import { Card, CardHeader, CardContent, Typography } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWind, faFire, faMapPin, faClock, faEarthAfrica } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 
-const Public = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
+const DisasterResponsePage = () => {
+  const navigate = useNavigate(); // Create a navigate function
 
   return (
-    <>
-      <div className="w-full py-6 lg:py-10">
-        <Slider {...settings}>
-          <div className="flex justify-center items-center w-full">
-            <img src={image3} alt="Disaster Image 1" className='w-full h-auto rounded' />
+    <div className="bg-gray-600 text-gray-100">
+      {/* Hero Section */}
+      <header
+        className="relative w-full h-[80vh] bg-cover bg-center" // Increased height to 80vh
+        style={{
+          backgroundImage:
+            "url('https://images.pexels.com/photos/6471926/pexels-photo-6471926.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')",
+          backgroundSize: "cover", // Ensures the background image covers the area
+        }}
+      >
+        {/* Left-Side Gradient Overlay for Darker Effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent opacity-70"></div>
+
+        {/* Navigation Bar */}
+        <nav className="absolute top-0 left-0 w-full flex items-center justify-between p-4 text-white z-10">
+          <div className="flex items-center">
+            <img src="your-logo.png" alt="Bold Aid Logo" className="h-10 mr-2" />
+            <h1 className="text-2xl font-bold">Bold Aid</h1>
           </div>
-          <div className="flex justify-center items-center w-full">
-            <img src={Vijayawada} alt="Disaster Image 2" className='w-full h-auto rounded' />
+          <div className="hidden md:flex space-x-6">
+            <a href="/" className="hover:underline">Home</a>
+            <a href="/" className="hover:underline">About Us</a>
+            <a href="/" className="hover:underline">Media</a>
+            <a href="/" className="hover:underline">Shop</a>
+            <a href="/" className="hover:underline">Volunteer</a>
+            <a href="/" className="hover:underline">Request Demo</a>
           </div>
-          <div className="flex justify-center items-center w-full">
-            <img src={Wayanad} alt="Disaster Image 3" className='w-full h-auto rounded' />
+          <button className="bg-red-500 px-4 py-2 rounded-full text-white">Donate</button>
+        </nav>
+
+        {/* Hero Content */}
+        <div className="relative flex flex-col items-start justify-center h-full text-left text-white z-10 px-6 md:px-16 lg:px-32">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            Your compassion <br className="hidden md:block" /> becomes a lifeline <br className="hidden md:block" /> in the storm.
+          </h2>
+          <p className="mt-2 text-sm md:text-base lg:text-lg">
+            Together, we rebuild lives, one donation at a time.
+          </p>
+          <div className="mt-4 flex flex-col space-y-3"> {/* Flex column for vertical stacking */}
+            <button 
+              onClick={() => navigate('/login')} // Navigate to Share Incident route
+              className="bg-red-500 hover:bg-red-600 px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold"
+            >
+              Report Now
+            </button>
+            <button 
+              onClick={() => navigate('/support')} // Navigate to Support route
+              className="border border-red-500 px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base font-semibold"
+            >
+              Support
+            </button>
           </div>
-        </Slider>
-      </div>
-      <div>
-        <section id="live-updates" className="bg-background py-12 px-6">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <div>
-              <h2 className="text-3xl font-bold">Live Updates</h2>
-              <p className="text-muted-foreground">
-                Stay informed on the latest natural disasters and emergency situations.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <Card>
-                <CardHeader
-                  title={<Typography variant="h6">Hurricane Ida</Typography>}
-                  subheader={<Typography variant="body2">Category 4 hurricane making landfall in Louisiana</Typography>}
-                />
-                <CardContent>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faWind} className="h-6 w-6 text-primary" />
-                    <span>155 mph winds</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faMapPin} className="h-6 w-6 text-primary" />
-                    <span>New Orleans, LA</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faClock} className="h-6 w-6 text-primary" />
-                    <span>Updated 30 minutes ago</span>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader
-                  title={<Typography variant="h6">Wildfires in California</Typography>}
-                  subheader={<Typography variant="body2">Multiple wildfires burning across Northern California</Typography>}
-                />
-                <CardContent>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faFire} className="h-6 w-6 text-primary" />
-                    <span>Over 50,000 acres burned</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faMapPin} className="h-6 w-6 text-primary" />
-                    <span>Northern California</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faClock} className="h-6 w-6 text-primary" />
-                    <span>Updated 1 hour ago</span>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader
-                  title={<Typography variant="h6">Earthquake in Japan</Typography>}
-                  subheader={<Typography variant="body2">Magnitude 7.1 earthquake strikes off the coast of Japan</Typography>}
-                />
-                <CardContent>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faEarthAfrica} className="h-6 w-6 text-primary" />
-                    <span>Magnitude 7.1</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faMapPin} className="h-6 w-6 text-primary" />
-                    <span>Off the coast of Japan</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon icon={faClock} className="h-6 w-6 text-primary" />
-                    <span>Updated 2 hours ago</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+        </div>
+      </header>
+
+      {/* Information Section */}
+      <section className="py-8 text-center"> {/* Reduced margin-top to 8 */}
+        <h2 className="text-3xl md:text-4xl font-bold text-white">
+          Get Involved to Help Save and Rebuild
+        </h2>
+        <p className="mt-4 text-lg text-gray-300">
+          The lives of those affected by natural disasters.
+        </p>
+
+        {/* Cards Section */}
+        <div className="flex flex-col md:flex-row justify-center items-center mt-10 space-y-6 md:space-y-0 md:space-x-10">
+          {/* Admin Login Card */}
+          <div className="bg-white shadow-lg rounded-lg p-8 w-80">
+            <h3 className="text-2xl text-gray-600 font-bold mb-4">Admin Login</h3>
+            <p className="text-gray-600">
+              Access tools and information to manage disaster response efforts effectively.
+            </p>
+            <button 
+              onClick={() => navigate('/login')} // Navigate to Admin Login route
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full mt-6"
+            >
+              Login as Admin
+            </button>
           </div>
-        </section>
-      </div>
-    </>
+
+          {/* User Login Card */}
+          <div className="bg-white shadow-lg rounded-lg p-8 w-80">
+            <h3 className="text-2xl text-gray-600 font-bold mb-4">User Login</h3>
+            <p className="text-gray-600">
+              Sign in to report incidents and receive updates on disaster management efforts.
+            </p>
+            <button 
+              onClick={() => navigate('/login')} // Navigate to User Login route
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full mt-6"
+            >
+              Login as User
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="flex flex-col md:flex-row">
+  {/* Image Section */}
+  <div className="md:w-1/2 bg-red-600 flex items-center justify-center p-8">
+    <div className="text-center">
+      <h3 className="text-3xl font-bold text-white">Make an Impact</h3>
+      <p className="mt-4 text-lg text-white">
+        Your contributions help us deliver essential supplies and support to disaster-stricken areas. Together, we can restore hope.
+      </p>
+      <p className="mt-4 text-lg text-white">
+        In disaster management, effective resource allocation is crucial. 
+        Before a disaster strikes, our rescue team prepares by identifying vulnerable areas, 
+        allocating resources strategically, and establishing communication networks. 
+        After the event, we assess the damage, mobilize additional support, 
+        and ensure that aid reaches those who need it most.
+      </p>
+    </div>
+  </div>
+  {/* Text Section */}
+  <div className="md:w-1/2 bg-gray-800 relative">
+    <img
+      src="https://images.pexels.com/photos/17809395/pexels-photo-17809395/free-photo-of-an-ambulance-of-the-chicago-fire-department-on-the-street.jpeg?auto=compress&cs=tinysrgb&w=600"
+      alt="Disaster Relief Efforts"
+      className="object-cover w-full h-full"
+    />
+  </div>
+</section>
+
+
+    </div>
   );
 };
 
-export default Public;
+export default DisasterResponsePage;

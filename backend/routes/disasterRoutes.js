@@ -31,7 +31,7 @@ router.post('/reportdisaster', upload.single('image'), async (req, res) => {
 
 router.get('/disasters', async (req, res) => {
     try {
-        await authMiddleware,disasterController.getDisasters(req, res);
+        await disasterController.getDisasters(req, res);
     }
     catch (err) {
         console.log(err);

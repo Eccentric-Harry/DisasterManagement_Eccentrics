@@ -26,7 +26,7 @@ const UserDisasters = () => {
 
     return (
         <>
-            <h1 className="text-blue-700 text-center mt-2 mb-4 text-2xl font-bold">My Disasters</h1>
+            <h1 className="text-gray-600 text-center mt-6 mb-4 text-2xl font-bold">My Disasters</h1>
             <div className="overflow-x-auto p-4">
                 {disaster ? (
                     <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
