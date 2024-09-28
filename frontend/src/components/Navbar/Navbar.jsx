@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import logo from "../../assets/logo.png";
 import './Navbar.css';
 
 const Navbar = () => {
@@ -28,41 +26,49 @@ const Navbar = () => {
             </button>
 
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex items-center flex-shrink-0">
               <Link to="/">
-                <img src={logo} alt="Logo" className="h-20 w-20 ml-4 rounded-xl" />
+                <img 
+                  src="https://tse4.mm.bing.net/th?id=OIP.NAnczBwAQlOcFWCMyYtm5gHaF7&pid=Api&P=0&h=180" 
+                  alt="Logo" 
+                  className="h-14 w-14 ml-4 rounded-xl bg-transparent"
+                />
               </Link>
+              {/* Text Next to Logo */}
+              <span className="ml-2 text-xl font-bold text-white">Sanrakshak</span>
             </div>
 
             {/* Navigation Links */}
             <nav className="flex space-x-8 ml-auto">
-              <button
-                onClick={() => navigate('/')}
-                className='inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full'
-              >
-                Home
-              </button>
+              <div className="flex space-x-8 ml-4"> {/* Added margin on left */}
+                <button
+                  onClick={() => navigate('/')}
+                  className='inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full'
+                >
+                  Home
+                </button>
 
-              <button
-                onClick={() => navigate('/login')}
-                className='inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full'
-              >
-                Share Incidents
-              </button>
+                <button
+                  onClick={() => navigate('/login')}
+                  className='inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full'
+                >
+                  Share Incidents
+                </button>
 
-              <button
-                onClick={() => navigate('/activeIncidents')}
-                className='inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full'
-              >
-                Active Incidents
-              </button>
+                <button
+                  onClick={() => navigate('/activeIncidents')}
+                  className='inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full'
+                >
+                  Active Incidents
+                </button>
 
-              <button
-                onClick={() => navigate('/support')}
-                className='inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full'
-              >
-                Support
-              </button>
+                <button
+                  onClick={() => navigate('/support')}
+                  className='inline-block px-6 py-2 border border-transparent duration-200 hover:border-red-500 hover:bg-transparent hover:text-white rounded-full'
+                >
+                  Support
+                </button>
+              </div>
             </nav>
           </div>
         </div>
@@ -97,14 +103,6 @@ const Navbar = () => {
           {/* Add more sidenav items here if needed */}
         </div>
       </div>
-
-      {/* Overlay for closing the sidenav */}
-      {isSidenavOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50 z-30"
-          onClick={toggleSidenav}
-        />
-      )}
     </>
   );
 };

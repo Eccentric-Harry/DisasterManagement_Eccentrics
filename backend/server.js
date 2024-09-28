@@ -57,13 +57,13 @@ const runPythonScripts = () => {
       const message = `Scraped ${tweetCount} tweets from Twitter.`;
 
       // Send SMS with the tweet count
-      sendSms(message, '+919305107868') // Your target phone number
-        .then((sid) => {
-          console.log(`SMS sent successfully with SID: ${sid}`);
-        })
-        .catch((error) => {
-          console.error('Failed to send SMS:', error);
-        });
+      // sendSms(message, '+919305107868') // Your target phone number
+      //   .then((sid) => {
+      //     console.log(`SMS sent successfully with SID: ${sid}`);
+      //   })
+      //   .catch((error) => {
+      //     console.error('Failed to send SMS:', error);
+      //   });
     }
 
     if (stderr) console.error('Python script stderr:', stderr);
