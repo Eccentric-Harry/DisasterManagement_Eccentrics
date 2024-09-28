@@ -6,6 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
+<<<<<<< HEAD
     <header className="fixed top-0 left-0 right-0 bg-gray-600 backdrop-blur-md text-white shadow-md z-50 transition-all duration-300 ease-in-out">
       <div className="max-w-full mx-auto px-4">
         <div className="flex items-center justify-between h-auto">
@@ -21,6 +22,19 @@ const Navbar = () => {
             {/* Text Next to Logo */}
             <span className="ml-2 text-xl font-bold text-white">Sanrakshak</span>
           </div>
+=======
+    <>
+      <header className="fixed top-0 left-0 right-0 bg-gray-600 backdrop-blur-md text-white shadow-md z-50 transition-all duration-300 ease-in-out">
+        <div className="max-w-full mx-auto px-4">
+          <div className="flex items-center justify-between h-auto">
+            {/* Sidenav Toggle Button */}
+            <button
+              onClick={toggleSidenav}
+              className="text-white text-xl ml-4 focus:outline-none p-2"
+            >
+              <FontAwesomeIcon icon={isSidenavOpen ? faTimes : faBars} size="1x" />
+            </button>
+>>>>>>> 00ec0ccd89888902407fe1b256dd7ca76de5d733
 
           {/* Navigation Links */}
           <nav className="flex space-x-8 ml-auto">
@@ -52,8 +66,43 @@ const Navbar = () => {
               >
                 Support
               </button>
+<<<<<<< HEAD
             </div>
           </nav>
+=======
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      {/* Sidenav */}
+      <div
+        className={`fixed inset-y-0 left-0 bg-gray-900 text-white w-64 transform ${
+          isSidenavOpen ? 'translate-x-0' : '-translate-x-full'
+        } transition-transform duration-300 ease-in-out z-40 shadow-lg`}
+      >
+        <div className="flex flex-col h-full p-6">
+          <h2 className="text-2xl font-bold mb-6 border-b border-gray-700 pb-2">Menu</h2>
+          <button
+            onClick={() => navigate('/info')}
+            className="mb-4 text-left px-4 py-3 rounded hover:bg-gray-800 transition duration-200 w-full text-lg"
+          >
+            Info
+          </button>
+          <button
+            onClick={() => navigate('/assistance')}
+            className="mb-4 text-left px-4 py-3 rounded hover:bg-gray-800 transition duration-200 w-full text-lg"
+          >
+            Assistance
+          </button>
+          <button
+            onClick={() => navigate('/alert')}
+            className="mb-4 text-left px-4 py-3 rounded hover:bg-gray-800 transition duration-200 w-full text-lg"
+          >
+            Alert
+          </button>
+          {/* Add more sidenav items here if needed */}
+>>>>>>> 00ec0ccd89888902407fe1b256dd7ca76de5d733
         </div>
       </div>
     </header>
