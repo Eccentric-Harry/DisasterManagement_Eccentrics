@@ -29,16 +29,15 @@ COOKIES = {
 }
 
 
-MINIMUM_TWEETS = 100
-QUERY = ('("flood" OR "floods" OR "#flood" OR "#floods") AND '
-         '("earthquake" OR "earthquakes" OR "#earthquake" OR "#earthquakes") AND '
-         '("landslide" OR "landslides" OR "#landslide" OR "#landslides") AND '
-         '("Andhra Pradesh" OR "Arunachal Pradesh" OR "Assam" OR "Bihar" OR '
+MINIMUM_TWEETS = 20
+QUERY = ('("flood" OR "floods" OR "#flood" OR "#floods" OR "earthquake" OR "earthquakes" OR '
+         '"#earthquake" OR "#earthquakes" OR "landslide" OR "landslides" OR "#landslide" OR '
+         '#"landslides") AND ("Andhra Pradesh" OR "Arunachal Pradesh" OR "Assam" OR "Bihar" OR '
          '"Chhattisgarh" OR "Goa" OR "Gujarat" OR "Haryana" OR "Himachal Pradesh" OR '
          '"Jharkhand" OR "Karnataka" OR "Kerala" OR "Madhya Pradesh" OR "Maharashtra" OR '
-         '"Manipur" OR "Meghalaya" OR "Mizoram" OR "Nagaland" OR "Odisha" OR '
-         '"Punjab" OR "Rajasthan" OR "Sikkim" OR "Tamil Nadu" OR "Telangana" OR '
-         '"Uttar Pradesh" OR "Uttarakhand" OR "West Bengal") lang:en')
+         '"Manipur" OR "Meghalaya" OR "Mizoram" OR "Nagaland" OR "Odisha" OR "Punjab" OR '
+         '"Rajasthan" OR "Sikkim" OR "Tamil Nadu" OR "Telangana" OR "Uttar Pradesh" OR '
+         '"Uttarakhand" OR "West Bengal") lang:en since:2024-09-01 -is:retweet')
 
 async def get_tweets(client, tweets):
     if tweets is None:
