@@ -5,7 +5,7 @@ import Navbar from "./Navbar/Navbar";
 const DashHeader = () => {
     const content = (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             {/* <header className="dash-header">
             <div className="dash-header__container">
                 <div className="dash-header__logo">

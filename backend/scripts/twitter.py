@@ -99,5 +99,5 @@ async def main():
     print(f'{datetime.now()} - Done! Got {tweet_count} tweets found')
 
 # Run the async main function
-if __name__ == "__main__":
+if __name__== "_main_":
     asyncio.run(main())
