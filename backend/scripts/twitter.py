@@ -11,21 +11,21 @@ COOKIES = {
     "IDE": "AHWqTUkf7vbpk1-o3dxsJjJeRjPtEI8qDHof1Vm0xb14Zw7PzRJgGuR8xRVPPfqw",
     "_ga": "GA1.2.1410684390.1725563519",
     "_gid": "GA1.2.796657842.1727453529",
-    "att": "1-1dE6eqjEEJQDjlgi3f96EdL8Xx5Gi3OES4Sy5t7g",
-    "auth_token": "41f47aca4197fae92c4dc9eed57c76468ffb3ae8",
-    "ct0": "c8590f65783c84d5af992a0c23860265508e60ecad8c325ce1a7c9feea6d6b44fe08d362773a5f0f6b9e956b6c233f135b25fab1361981cd943aa542c0e586cb25a7d4f57aa40290e8f54e826493ef19",
+    "auth_multi": "\"1799443270243897344:24e4e20e51d783fc08c427bce0017460c079ffdd\"",
+    "auth_token": "4c3d02551c12000bff1c167f07048528c0be89e4",
+    "ct0": "a70b599ead16fec95163cb29f7be8aaa926fc5790aa4737209c2181a4615b90af8d3045643ef49c796193e15067b39b80dd111c9372c2a133d4d4039f55202b085bb82b9f5ec358686d9305361fa3372",
     "des_opt_in": "Y",
     "dnt": "1",
     "g_state": "{\"i_l\":0}",
-    "gt": "1839698029915381932",
-    "guest_id": "v1%3A172745372168264522",
-    "guest_id_ads": "v1%3A172745372168264522",
-    "guest_id_marketing": "v1%3A172745372168264522",
+    "gt": "1839738205756870718",
+    "guest_id": "v1%3A172746322219318794",
+    "guest_id_ads": "v1%3A172746322219318794",
+    "guest_id_marketing": "v1%3A172746322219318794",
     "kdt": "ReNCnG3uEhdszQzrNjxLLeDQnpD8ch8ZlydVnM2i",
     "lang": "en",
     "night_mode": "2",
-    "personalization_id": "\"v1_YPVQDiA2uKjCHmtUeiKKhQ==\"",
-    "twid": "u%3D1499026936416583685"
+    "personalization_id": "\"v1_Dc4p3BPLufuBUH1WTL3ueA==\"",
+    "twid": "u%3D1820188424231694336"
 }
 
 
@@ -100,5 +100,5 @@ async def main():
     print(f'{datetime.now()} - Done! Got {tweet_count} tweets found')
 
 # Run the async main function
-if __name__ == "__main__":
+if __name__== "_main_":
     asyncio.run(main())

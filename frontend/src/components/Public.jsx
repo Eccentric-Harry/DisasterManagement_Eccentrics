@@ -41,7 +41,7 @@ const DisasterResponsePage = () => {
             Your compassion <br className="hidden md:block" /> becomes a lifeline <br className="hidden md:block" /> in the storm.
           </h2>
           <p className="mt-2 text-sm md:text-base lg:text-lg">
-            Together, we rebuild lives, one donation at a time.
+          United in compassion, we rise to rebuild  <br className="hidden md:block" /> after natural disasters strike.
           </p>
           <div className="mt-4 flex flex-col space-y-3"> {/* Flex column for vertical stacking */}
             <button 

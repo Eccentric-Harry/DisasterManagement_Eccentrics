@@ -44,7 +44,7 @@ const DashFooter = () => {
             </div>
             <div className="border-t border-gray-700 mt-6 pt-4 text-center">
                 <p className="text-sm text-gray-400">&copy; 2024 Sanrakshak. All Rights Reserved.</p>
-                <p className="text-sm text-gray-400">Current User: [User Name] | Status: [User Status]</p>
+               
             </div>
         </footer>
     );
