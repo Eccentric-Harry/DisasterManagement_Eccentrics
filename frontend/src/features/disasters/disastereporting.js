@@ -50,7 +50,7 @@ const DisasterReporting = () => {
             const res = await axios.post("http://localhost:5000/reportdisaster", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': Bearer ${token}
+                    'Authorization': `Bearer ${token}`
                 }
             });
 
@@ -59,13 +59,13 @@ const DisasterReporting = () => {
         } catch (err) {
             if (err.response) {
                 console.log('Response error:', err.response.data);
-                alert(Error: ${err.response.data.message || err.message});
+                alert(`Error: ${err.response.data.message || err.message}`);
             } else if (err.request) {
                 console.log('Request error:', err.request);
                 alert('No response from server. Please try again.');
             } else {
                 console.log('General error:', err.message);
-                alert(Error: ${err.message});
+                alert(`Error: ${err.message}`);
             }
         }
     };

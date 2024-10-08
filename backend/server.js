@@ -46,7 +46,7 @@ app.use('/disasters', downloadReportRoutes);
 
 // Function to run the Python script
 const runPythonScripts = () => {
-  exec(python "${path.join(__dirname, 'scripts', 'twitter.py')}", (error, stdout, stderr) => {
+  exec(python `${path.join(__dirname, 'scripts', 'twitter.py')}`, (error, stdout, stderr) => {
     if (error) {
       console.error('Error executing Python script:', error);
       return;
@@ -61,7 +61,7 @@ const runPythonScripts = () => {
       
       sendSms(message, '+919305107868') 
         .then((sid) => {
-          console.log(SMS sent successfully with SID: ${sid});
+          console.log(`SMS sent successfully with SID: ${sid}`);
         })
         .catch((error) => {
           console.error('Failed to send SMS:', error);
@@ -115,10 +115,10 @@ app.use(errorHandler);
 // Connect to MongoDB and start the server
 mongoose.connection.once('open', () => {
   console.log('MongoDB connected');
-  app.listen(port, () => console.log(Listening on port ${port}));
+  app.listen(port, () => console.log(`Listening on port ${port}`));
 });
 
 mongoose.connection.on('error', (err) => {
   console.log(err);
-  logEvents(${err.no}:${err.code}\t${err.syscall}\t${err.hostname}, 'mongoErrLog.log');
+  logEvents(`${err.no}:${err.code}\t${err.syscall}\t${err.hostname}, 'mongoErrLog.log'`);
 });
