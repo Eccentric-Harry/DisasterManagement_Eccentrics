@@ -28,7 +28,6 @@ COOKIES = {
     "twid": "u%3D1820188424231694336"
 }
 
-
 MINIMUM_TWEETS = 20
 QUERY = ('("flood" OR "floods" OR "#flood" OR "#floods" OR "earthquake" OR "earthquakes" OR '
          '"#earthquake" OR "#earthquakes" OR "landslide" OR "landslides" OR "#landslide" OR '
@@ -99,5 +98,5 @@ async def main():
     print(f'{datetime.now()} - Done! Got {tweet_count} tweets found')
 
 # Run the async main function
-if __name__== "_main_":
+if __name__ == "_main_":
     asyncio.run(main())

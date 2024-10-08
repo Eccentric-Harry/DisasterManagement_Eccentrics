@@ -26,17 +26,19 @@ const DisasterReporting = () => {
                 ...disasterInfo,
                 location: {
                     type: 'Point',
-                    coordinates: [coordinates[1], coordinates[0]] // Ensure coordinates are in [longitude, latitude] order
+                    coordinates: [coordinates[0], coordinates[1]]
                 }
             };
 
             const formData = new FormData();
             formData.append('locationType', updatedDisasterInfo.location.type);
             formData.append('locationCoordinates', JSON.stringify(updatedDisasterInfo.location.coordinates));
-            formData.append('reportedat', updatedDisasterInfo.reportedat);
-            formData.append('disasterType', updatedDisasterInfo.disasterType);
-            formData.append('description', updatedDisasterInfo.description);
-            formData.append('severity', updatedDisasterInfo.severity);
+
+            Object.keys(updatedDisasterInfo).forEach(key => {
+                if (key !== 'image') {
+                    formData.append(key, updatedDisasterInfo[key]);
+                }
+            });
             formData.append('image', updatedDisasterInfo.image);
 
             const token = localStorage.getItem('token');
@@ -48,7 +50,7 @@ const DisasterReporting = () => {
             const res = await axios.post("http://localhost:5000/reportdisaster", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': Bearer ${token}
                 }
             });
 
@@ -56,14 +58,14 @@ const DisasterReporting = () => {
             alert("Disaster reported successfully");
         } catch (err) {
             if (err.response) {
-                console.error('Response error:', err.response.data);
-                alert(`Error: ${err.response.data.message || err.message}`);
+                console.log('Response error:', err.response.data);
+                alert(Error: ${err.response.data.message || err.message});
             } else if (err.request) {
-                console.error('Request error:', err.request);
+                console.log('Request error:', err.request);
                 alert('No response from server. Please try again.');
             } else {
-                console.error('General error:', err.message);
-                alert(`Error: ${err.message}`);
+                console.log('General error:', err.message);
+                alert(Error: ${err.message});
             }
         }
     };
@@ -109,7 +111,6 @@ const DisasterReporting = () => {
                         </label>
                         <select
                             id="disaster-severity"
-                            required
                             className="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
                             onChange={(e) => setDisasterInfo({ ...disasterInfo, severity: e.target.value })}
                         >
@@ -141,8 +142,14 @@ const DisasterReporting = () => {
                             type="file"
                             id="image"
                             name="image"
+                            multiple
                             className="form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
-                            onChange={(e) => setDisasterInfo({ ...disasterInfo, image: e.target.files[0] })}
+                            onChange={(e) => {
+                                setDisasterInfo({
+                                    ...disasterInfo,
+                                    image: e.target.files[0],
+                                });
+                            }}
                         />
                     </div>
 
@@ -170,6 +177,6 @@ const DisasterReporting = () => {
     );
 
     return content;
-};
+}
 
 export default DisasterReporting;
