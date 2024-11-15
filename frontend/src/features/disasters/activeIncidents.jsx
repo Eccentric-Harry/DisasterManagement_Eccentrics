@@ -15,7 +15,7 @@ const ActiveIncidents = () => {
           throw new Error('No token found');
         }
 
-        const response = await axios.get('http://localhost:5000/api/activeIncidents', {
+        const response = await axios.get('https://disaster-backend-nine.vercel.app/api/activeIncidents', {
           headers: {
             Authorization: `Bearer ${token}`, // Include the token in the request headers
           },

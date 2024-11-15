@@ -8,7 +8,7 @@ const DisasterList = () => {
   useEffect(() => {
     const fetchDisasters = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/disasters',{
+        const response = await axios.get('https://disaster-backend-nine.vercel.app/disasters',{
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

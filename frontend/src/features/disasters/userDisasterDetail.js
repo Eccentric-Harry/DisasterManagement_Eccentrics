@@ -70,7 +70,7 @@ const UserDisasterDetail = () => {
         }
     
         try {
-            const response = await axios.put(`http://localhost:5000/disasters/${id}`, form, {
+            const response = await axios.put(`https://disaster-backend-nine.vercel.app/disasters/${id}`, form, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'Content-Type': 'multipart/form-data'

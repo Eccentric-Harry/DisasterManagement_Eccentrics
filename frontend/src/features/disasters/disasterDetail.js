@@ -17,7 +17,7 @@ const DisasterDetail = () => {
         const fetchDisaster = async () => {
             try {
                 // Fetch disaster data
-                const response = await axios.get(`http://localhost:5000/disasters/${id}`,{
+                const response = await axios.get(`https://disaster-backend-nine.vercel.app/disasters/${id}`,{
                     headers: {
                       'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
@@ -48,7 +48,7 @@ const DisasterDetail = () => {
 
         const fetchResources = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/disasters/${id}/resources`,{
+                const response = await axios.get(`https://disaster-backend-nine.vercel.app/disasters/${id}/resources`,{
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
@@ -62,7 +62,7 @@ const DisasterDetail = () => {
 
         const fetchReports = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/disasters/${id}/reports`,{
+                const response = await axios.get(`https://disaster-backend-nine.vercel.app/disasters/${id}/reports`,{
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
@@ -99,7 +99,7 @@ const DisasterDetail = () => {
     
             console.log("Token being sent:", token);
     
-            const response = await axios.get(`http://localhost:5000/disasters/${id}/download`, {
+            const response = await axios.get(`https://disaster-backend-nine.vercel.app/disasters/${id}/download`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 },

@@ -18,7 +18,7 @@ const ResourceForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/disasters/${disasterId}/resources`, {
+            const response = await axios.post(`https://disaster-backend-nine.vercel.app/disasters/${disasterId}/resources`, {
                 disasterId,
                 vehicle,
                 personnel,

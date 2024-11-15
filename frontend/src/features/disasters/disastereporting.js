@@ -47,7 +47,7 @@ const DisasterReporting = () => {
                 return;
             }
 
-            const res = await axios.post("http://localhost:5000/reportdisaster", formData, {
+            const res = await axios.post("https://disaster-backend-nine.vercel.app/reportdisaster", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`

@@ -15,7 +15,7 @@ const ReportForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/disasters/${disasterId}/report`, {
+            const response = await axios.post(`https://disaster-backend-nine.vercel.app/${disasterId}/report`, {
                 title,
                 description
             }, {
