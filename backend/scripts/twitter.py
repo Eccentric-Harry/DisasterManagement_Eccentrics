@@ -5,26 +5,23 @@ import csv
 import os
 import json
 from random import randint
+
+# Replace these with your actual cookies and tokens
 COOKIES = {
-    "IDE": "AHWqTUkf7vbpk1-o3dxsJjJeRjPtEI8qDHof1Vm0xb14Zw7PzRJgGuR8xRVPPfqw",
-    "_ga": "GA1.2.1410684390.1725563519",
-    "_gid": "GA1.2.796657842.1727453529",
-    "auth_multi": "\"1799443270243897344:24e4e20e51d783fc08c427bce0017460c079ffdd\"",
-    "auth_token": "4c3d02551c12000bff1c167f07048528c0be89e4",
-    "ct0": "a70b599ead16fec95163cb29f7be8aaa926fc5790aa4737209c2181a4615b90af8d3045643ef49c796193e15067b39b80dd111c9372c2a133d4d4039f55202b085bb82b9f5ec358686d9305361fa3372",
-    "des_opt_in": "Y",
-    "dnt": "1",
-    "g_state": "{\"i_l\":0}",
-    "gt": "1839738205756870718",
-    "guest_id": "v1%3A172746322219318794",
-    "guest_id_ads": "v1%3A172746322219318794",
-    "guest_id_marketing": "v1%3A172746322219318794",
-    "kdt": "ReNCnG3uEhdszQzrNjxLLeDQnpD8ch8ZlydVnM2i",
+    "att": "1-YlUf8qSXTcsACIEDyO25FaH7s9yy8GKYCY1iWlRB",
+    "auth_token": "0061e02622ded6f30f1de6bed37c6bee5538914c",
+    "ct0": "1f0c32b6b7d1e8a25b2763a04d2a19ed2921b1fc74e9fbc564e744a26e23ee73891ad5323903df49eb2630d06f1fe49e0b866b48d20cecf478579fc7b7f7faf62d58822c210193f6e067b2a8148cc3ce",
+    "gt": "1857496080981831746",
+    "guest_id": "v1%3A173169653116887109",
+    "guest_id_ads": "v1%3A173169653116887109",
+    "guest_id_marketing": "v1%3A173169653116887109",
+    "kdt": "DzBQZ1rslkW91hCeRB9KlxEHTKz9SV6QmJ8UzM2M",
     "lang": "en",
     "night_mode": "2",
-    "personalization_id": "\"v1_Dc4p3BPLufuBUH1WTL3ueA==\"",
-    "twid": "u%3D1820188424231694336"
+    "personalization_id": "\"v1_whBl/YhDz3EjictjpGFOVA==\"",
+    "twid": "u%3D1499026936416583685"
 }
+
 
 MINIMUM_TWEETS = 20
 QUERY = ('("flood" OR "floods" OR "#flood" OR "#floods" OR "earthquake" OR "earthquakes" OR '
@@ -37,6 +34,7 @@ QUERY = ('("flood" OR "floods" OR "#flood" OR "#floods" OR "earthquake" OR "eart
          '"Uttarakhand" OR "West Bengal") lang:en since:2024-09-01 -is:retweet')
 
 async def get_tweets(client, tweets):
+    """Get the next batch of tweets or the first batch if none provided."""
     if tweets is None:
         print(f'{datetime.now()} - Getting tweets...')
         tweets = await client.search_tweet(QUERY, product='Top')
@@ -49,21 +47,21 @@ async def get_tweets(client, tweets):
     return tweets
 
 async def main():
+    """Main function to authenticate and fetch tweets, then save them to CSV."""
     # Create a CSV file in the backend/data directory
     csv_file_path = os.path.join('scripts', 'data', 'tweets.csv')
     
     # Ensure data directory exists
     os.makedirs(os.path.dirname(csv_file_path), exist_ok=True)
 
+    # Open the CSV file and write headers
     with open(csv_file_path, 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(['Tweet_count', 'Username', 'Text', 'Created At', 'Retweets', 'Likes', 'Image'])
 
-    # Authenticate to X.com using cookies
+    # Initialize the client and set headers
     client = Client(language='en-US')
-    
-    # Load cookies from the COOKIES variable
-    client.set_cookies(COOKIES)  # Ensure this method is correct as per your library's documentation
+    client.set_cookies(COOKIES)  # Set the cookies for authentication
 
     tweet_count = 0
     tweets = None
@@ -82,11 +80,10 @@ async def main():
             print(f'{datetime.now()} - No more tweets found')
             break
 
+        # Loop through the fetched tweets and save them to CSV
         for tweet in tweets:
             tweet_count += 1
             tweet_data = [tweet_count, tweet.user.name, tweet.text, tweet.created_at, tweet.retweet_count, tweet.favorite_count]
-
-            # Append tweet data to the CSV file
             with open(csv_file_path, 'a', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
                 writer.writerow(tweet_data)
@@ -95,5 +92,5 @@ async def main():
 
     print(f'{datetime.now()} - Done! Got {tweet_count} tweets found')
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     asyncio.run(main())
