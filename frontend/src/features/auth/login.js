@@ -46,6 +46,13 @@ const Login = () => {
         }
     };
 
+    const handleGuestLogin = () => {
+        // Set the guest credentials and role
+        setEmail('one@gmail.com');
+        setPassword('12345678');
+        setRole('user'); // Set role as user, you can also set 'admin' if needed
+    };
+
     return (
         <>
             <Navbar />
@@ -64,6 +71,7 @@ const Login = () => {
                                 autoComplete="off"
                                 name="email"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
@@ -77,6 +85,7 @@ const Login = () => {
                                 placeholder="Enter Password"
                                 name="password"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
@@ -120,6 +129,16 @@ const Login = () => {
                     </div>
 
                     {loginError && <p className="text-red-500 text-center mt-4">Incorrect email or password</p>}
+
+                    {/* Guest Login Button */}
+                    <div className="text-center mt-4">
+                        <button
+                            onClick={handleGuestLogin}
+                            className="w-full py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition"
+                        >
+                            Login as Guest
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
