@@ -5,8 +5,6 @@ import csv
 import os
 import json
 from random import randint
-
-# Cookies as a dictionary (replace with your actual cookie values)
 COOKIES = {
     "IDE": "AHWqTUkf7vbpk1-o3dxsJjJeRjPtEI8qDHof1Vm0xb14Zw7PzRJgGuR8xRVPPfqw",
     "_ga": "GA1.2.1410684390.1725563519",
@@ -97,6 +95,5 @@ async def main():
 
     print(f'{datetime.now()} - Done! Got {tweet_count} tweets found')
 
-# Run the async main function
 if __name__ == "_main_":
     asyncio.run(main())
