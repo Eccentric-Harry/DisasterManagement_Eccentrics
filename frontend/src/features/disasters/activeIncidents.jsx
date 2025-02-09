@@ -9,7 +9,7 @@ const ActiveIncidents = () => {
   useEffect(() => {
     const fetchIncidents = async () => {
       try {
-        const token = localStorage.getItem('token'); // Assuming token is stored in localStorage after login
+        const token = localStorage.getItem('token'); 
 
         if (!token) {
           throw new Error('No token found');
@@ -17,9 +17,9 @@ const ActiveIncidents = () => {
 
         const response = await axios.get('https://disaster-backend-nine.vercel.app/api/activeIncidents', {
           headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the request headers
+            Authorization: `Bearer ${token}`, 
           },
-          withCredentials: true, // Ensure cookies are sent if using session-based auth
+          withCredentials: true, 
         });
 
         setIncidents(response.data);

@@ -8,7 +8,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [role, setRole] = useState('');
     const [password, setPassword] = useState('');
-    const [loginError, setLoginError] = useState(false); // New state for login error
+    const [loginError, setLoginError] = useState(false); 
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -42,15 +42,15 @@ const Login = () => {
             }
         } catch (err) {
             console.log(err);
-            setLoginError(true); // Show error message
+            setLoginError(true);
         }
     };
 
     const handleGuestLogin = () => {
-        // Set the guest credentials and role
+
         setEmail('one@gmail.com');
         setPassword('12345678');
-        setRole('user'); // Set role as user, you can also set 'admin' if needed
+        setRole('user'); 
     };
 
     return (
@@ -130,7 +130,7 @@ const Login = () => {
 
                     {loginError && <p className="text-red-500 text-center mt-4">Incorrect email or password</p>}
 
-                    {/* Guest Login Button */}
+               
                     <div className="text-center mt-4">
                         <button
                             onClick={handleGuestLogin}
