@@ -38,5 +38,5 @@ An intelligent, real-time disaster monitoring and response system powered by Apa
 
 ---
 
-## 📁 Project Structure
+
 
